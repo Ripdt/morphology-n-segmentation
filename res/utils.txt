@@ -9,3 +9,5 @@ https://www.facom.ufu.br/~backes/gsi058/Aula09-Segmentacao.pdf
 https://edisciplinas.usp.br/pluginfile.php/1086819/mod_resource/content/1/Segmenta%C3%A7%C3%A3o2016.pdf
 https://iatracker.com.br/glossario/o-que-e-gaussian-noise/
 https://medium.com/data-hackers/segmenta%C3%A7%C3%A3o-de-imagens-utilizando-t%C3%A9cnicas-dethresholding-1ee031562c63
+https://medium.com/geekculture/image-thresholding-from-scratch-a66ae0fb6f09
+https://medium.com/@ms_somanna/guide-to-adding-noise-to-your-data-using-python-and-numpy-c8be815df524
