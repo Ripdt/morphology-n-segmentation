@@ -1,4 +1,11 @@
-https://biolab.csr.unibo.it/ResearchPages/SFinGe_Samples.asp
+DATASET IMPRESSÕES DIGITAIS PROJETO 1 https://biolab.csr.unibo.it/ResearchPages/SFinGe_Samples.asp
 
-https://thispersondoesnotexist.com/
+DATASET ROSTOS DE PESSOAS PROJETO 2 https://thispersondoesnotexist.com/
 
+REFERENCIAS
+
+https://edisciplinas.usp.br/pluginfile.php/5782594/mod_resource/content/11/Aula%206%20-%20Processamento%20Morfologico.pdf
+https://www.facom.ufu.br/~backes/gsi058/Aula09-Segmentacao.pdf
+https://edisciplinas.usp.br/pluginfile.php/1086819/mod_resource/content/1/Segmenta%C3%A7%C3%A3o2016.pdf
+https://iatracker.com.br/glossario/o-que-e-gaussian-noise/
+https://medium.com/data-hackers/segmenta%C3%A7%C3%A3o-de-imagens-utilizando-t%C3%A9cnicas-dethresholding-1ee031562c63
