@@ -31,7 +31,7 @@ def project_1() -> None:
     show_and_save_img(img_basic_threshold, 'fingerprint_basic_threshold')
     show_and_save_img(img_otsu_threshold, 'fingerprint_otsu_threshold')
 
-    noise = np.random.normal(0, 50, img.shape)  # Gaussian noise
+    noise = np.random.normal(0, 1, img.shape)  # Gaussian noise
     img_noise = img + noise
     show_and_save_img(img_noise, 'fingerprint_noised')
 
