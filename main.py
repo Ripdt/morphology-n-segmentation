@@ -5,7 +5,7 @@ from threshold import basic_threshold, otsu_threshold
 from morph import morph
 
 from skin_color_thresholding import skin_color_thresholding
-from kmeans import kmeans_face_detection
+from kmeans import KMeans3D
 
 from os import mkdir
 from os.path import exists
@@ -48,10 +48,11 @@ def project_2() -> None:
     img_face = cv2.imread('res/unexistent-person-1.jpg')
     show_and_save_img(img_face, 'unexistent-person-1-original')
 
-    img_skin = skin_color_thresholding(img_face)
-    show_and_save_img(img_skin, 'face_skin_color_thresholding')
-
-    img_kmeans = kmeans_face_detection(img=img_face, k=2)
+    img_skin_color, img_skin_binary = skin_color_thresholding(img_face)   
+    show_and_save_img(img_skin_binary, 'face_skin_binary')  # Imagem preto e branco
+    show_and_save_img(img_skin_color, 'face_skin_color_thresholding')  # Imagem colorida com a pele destacada
+    
+    img_kmeans = KMeans3D(img_face, k=2, max_iterations=10, imgNameOut="face_kmeans_detection.png")
     show_and_save_img(img_kmeans, 'face_kmeans_detection')
 
 def main() -> None:
