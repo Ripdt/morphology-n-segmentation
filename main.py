@@ -33,13 +33,13 @@ def project_1() -> None:
     img_noise = cv2.add(img, noise.astype(np.uint8))
     show_and_save_img(img_noise, 'noised')
 
-    img_basic_threshold = basic_threshold(img=img, threshold_value=83)
+    img_basic_threshold = basic_threshold(img=img, threshold_value=100)
     img_otsu_threshold = otsu_threshold(img=img)
 
     show_and_save_img(img_basic_threshold, 'basic_threshold')
     show_and_save_img(img_otsu_threshold, 'otsu_threshold')
 
-    img_noised_basic_threshold = basic_threshold(img=img_noise, threshold_value=106)
+    img_noised_basic_threshold = basic_threshold(img=img_noise, threshold_value=100)
     img_noised_otsu_threshold = otsu_threshold(img=img_noise)
 
     show_and_save_img(img_noised_basic_threshold, 'noised_basic_threshold')
