@@ -1,15 +1,9 @@
 import numpy as np
 
 def basic_threshold(img: np.ndarray, threshold_value: int) -> np.ndarray:
-    img_out = np.zeros_like(img)
-    height, width = img.shape
-
-    for i in range(height):
-        for j in range(width):
-            if img[i, j] >= threshold_value:
-                img_out[i, j] = 255
-            else:
-                img_out[i, j] = 0
+    img_out = img.copy()
+    img_out[img_out > threshold_value] = 255
+    img_out[img_out <= threshold_value] = 0
 
     return img_out
 
@@ -46,11 +40,7 @@ def otsu_threshold(img: np.ndarray) -> np.ndarray:
     # Best threshold minimizes the Otsu criteria
     best_threshold = threshold_range[np.argmin(criterias)]
 
-    binary = img.copy()
-    binary[binary > best_threshold] = 255
-    binary[binary <= best_threshold] = 0
-
-    return binary
+    return basic_threshold(img, best_threshold)
 
 if __name__ == '__main__':
     from cv2 import imread, imshow, waitKey, destroyAllWindows, IMREAD_GRAYSCALE
