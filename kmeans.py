@@ -17,7 +17,7 @@ def ScatterPlot(img, centroids, clusterLabels, plotNameOut="scatterPlot.png"):
     plt.savefig(plotNameOut)
     plt.show()
 
-def ShowCluster(img, centroids, clusterLabels, imgNameOut="out.png"):
+def ShowCluster(img, centroids, clusterLabels, imgNameOut="kmeans.png"):
     result = np.zeros((img.shape), dtype=np.uint8)
     for i in range(img.shape[0]):
         for j in range(img.shape[1]):
@@ -33,7 +33,7 @@ def ShowCluster(img, centroids, clusterLabels, imgNameOut="out.png"):
 def GetEuclideanDistance(Cbgr, Ibgr):
     return np.sqrt(np.sum((Cbgr - Ibgr) ** 2))
 
-def KMeans3D(img, k=2, max_iterations=100, imgNameOut="out.png"):
+def KMeans3D(img, k=2, max_iterations=100, tolerance=1.0, imgNameOut="kmeans.png"):
     Clusters = k
     centroids = np.zeros((k, 3), dtype=np.float64)
     
@@ -44,8 +44,10 @@ def KMeans3D(img, k=2, max_iterations=100, imgNameOut="out.png"):
         centroids[i] = img[x, y]
 
     ClusterLabels = np.zeros((img.shape[0], img.shape[1]), dtype=np.uint8)
+    prev_centroids = np.copy(centroids)
 
     for i in range(max_iterations):
+        # Assign each pixel to the nearest centroid
         for x in range(img.shape[0]):
             for y in range(img.shape[1]):
                 MinDist = sys.float_info.max
@@ -61,20 +63,19 @@ def KMeans3D(img, k=2, max_iterations=100, imgNameOut="out.png"):
             if len(points) > 0:
                 centroids[c] = np.mean(points, axis=0)
 
+        # Check for convergence
+        diff = np.sum(np.sqrt(np.sum((centroids - prev_centroids) ** 2, axis=1)))
+        if diff <= tolerance:
+            print(f"Converged after {i+1} iterations.")
+            break
+        prev_centroids = np.copy(centroids)
+
     ShowCluster(img, centroids, ClusterLabels, imgNameOut)
 
-
 if __name__ == '__main__':
-    # Carregar a imagem
-    Image = cv2.imread("res/unexistent-person-1.jpg")  # Use um caminho adequado para a imagem
+    Image = cv2.imread("res/unexistent-person-1.jpg") 
 
-    # Verifica se a imagem foi carregada corretamente
-    if Image is None:
-        print("Error: Could not load image. Please check the path.")
-        sys.exit(1)  # Sai da função se a imagem não for carregada
-
-    # Redimensionar a imagem
     Image = cv2.resize(Image, None, fx=0.25, fy=0.25)
 
     print("Image Size:", Image.shape)
-    KMeans3D(Image, k=2, max_iterations=10, imgNameOut="img_out.png")
+    KMeans3D(Image, k=2, max_iterations=10, imgNameOut="out/img_kmeans.png")
