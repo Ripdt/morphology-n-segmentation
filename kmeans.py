@@ -63,16 +63,18 @@ def KMeans3D(img, k=2, max_iterations=100, imgNameOut="out.png"):
 
     ShowCluster(img, centroids, ClusterLabels, imgNameOut)
 
-# Carregar a imagem
-Image = cv2.imread("res/unexistent-person-1.jpg")  # Use um caminho adequado para a imagem
 
-# Verifica se a imagem foi carregada corretamente
-if Image is None:
-    print("Error: Could not load image. Please check the path.")
-    sys.exit(1)  # Sai da função se a imagem não for carregada
+if __name__ == '__main__':
+    # Carregar a imagem
+    Image = cv2.imread("res/unexistent-person-1.jpg")  # Use um caminho adequado para a imagem
 
-# Redimensionar a imagem
-Image = cv2.resize(Image, None, fx=0.25, fy=0.25)
+    # Verifica se a imagem foi carregada corretamente
+    if Image is None:
+        print("Error: Could not load image. Please check the path.")
+        sys.exit(1)  # Sai da função se a imagem não for carregada
 
-print("Image Size:", Image.shape)
-KMeans3D(Image, k=2, max_iterations=10, imgNameOut="img_out.png")
+    # Redimensionar a imagem
+    Image = cv2.resize(Image, None, fx=0.25, fy=0.25)
+
+    print("Image Size:", Image.shape)
+    KMeans3D(Image, k=2, max_iterations=10, imgNameOut="img_out.png")
