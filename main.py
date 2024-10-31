@@ -123,7 +123,7 @@ def project_2() -> None:
 
     print(f"SEEDS Metrics: IoU={iou_seeds}, Precision={precision_seeds}, Recall={recall_seeds}, F1 Score={f1_seeds}")
 
-    # K-means
+    # K-means - Rodar no próprio método
     #img_kmeans = KMeans3D(img=img_face, k=2)
     #show_and_save_img(img_kmeans, 'face_kmeans_detection')  # Image after K-means
     #kmeans_binary_mask = (img_kmeans > 0).astype(np.uint8) * 255  # Adjust to get the binary mask
