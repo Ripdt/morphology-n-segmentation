@@ -61,14 +61,30 @@ def project_1() -> None:
     show_and_save_img(img_basic_morphed_dilated_eroded, 'morphed_dilated_erode_basic_threshold')
     show_and_save_img(img_otsu_morphed_dilated_eroded, 'morphed_dilated_erode_otsu_threshold')
 
+    print('\nProjeto 1\n\nPSNR:')
+
+    psnr_basic_x_otsu = calculate_psnr(img_basic_threshold, img_otsu_threshold)
+    psnr_otsu_x_basic = calculate_psnr(img_otsu_threshold, img_basic_threshold)
+
+    print(F'\n\t- Limiarização básica x Otsu: {psnr_basic_x_otsu}')
+    print(F'\n\t- Limiarização Otsu x básica: {psnr_otsu_x_basic}')
+
     psnr_basic_threshold_dilated = calculate_psnr(img_basic_threshold, img_basic_morphed_dilate)
     psnr_basic_threshold_eroded = calculate_psnr(img_basic_threshold, img_basic_morphed_eroded)
     psnr_basic_threshold_dilated_eroded = calculate_psnr(img_basic_threshold, img_basic_morphed_dilated_eroded)
 
-    print('Projeto 1\n\nPSNR:')
     print(F'\n\t- Limiarização básica dilatada: {psnr_basic_threshold_dilated}')
     print(F'\n\t- Limiarização básica erodida: {psnr_basic_threshold_eroded}')
     print(F'\n\t- Limiarização básica dilatada+erodida: {psnr_basic_threshold_dilated_eroded}')
+
+    psnr_otsu_threshold_dilated = calculate_psnr(img_otsu_threshold, img_otsu_morphed_dilate)
+    psnr_otsu_threshold_eroded = calculate_psnr(img_otsu_threshold, img_otsu_morphed_eroded)
+    psnr_otsu_threshold_dilated_eroded = calculate_psnr(img_otsu_threshold, img_otsu_morphed_dilated_eroded)
+
+    print(F'\n\t- Limiarização Otsu dilatada: {psnr_otsu_threshold_dilated}')
+    print(F'\n\t- Limiarização Otsu erodida: {psnr_otsu_threshold_eroded}')
+    print(F'\n\t- Limiarização Otsu dilatada+erodida: {psnr_otsu_threshold_dilated_eroded}')
+    print('\n')
 
 def project_2() -> None:
     img_face = cv2.imread('res/unexistent-person-1.jpg')
